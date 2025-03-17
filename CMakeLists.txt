@@ -1,13 +1,18 @@
+### Project Settings ###
+# Set min cmake version
 cmake_minimum_required(VERSION 3.5)
 set(PROJ_NAME "SDL-OpenGL-Template")
 
-if (WIN32)
-    set(PROJ_OUT "${PROJ_NAME}-windows-x86_64")
-    set(CMAKE_WIN32_EXECUTABLE TRUE)
-endif (WIN32)
-if (UNIX)
-    set(PROJ_OUT "${PROJ_NAME}-unix")
-endif (UNIX)
+# Set executable target depending on OS...
+if(WIN32)
+    set(PROJ_OUT "${PROJ_NAME}-win-x86_64")
+    # Show console (FALSE=show, TRUE=don't show)
+    set(CMAKE_WIN32_EXECUTABLE FALSE)
+endif(WIN32)
+if(UNIX)
+    EXECUTE_PROCESS( COMMAND uname -m COMMAND tr -d '\n' OUTPUT_VARIABLE ARCHITECTURE )
+    set(PROJ_OUT "${PROJ_NAME}-unix-${ARCHITECTURE}")
+endif(UNIX)
 
 # Project
 project(${PROJ_OUT} VERSION 0.1.1.0 LANGUAGES C CXX)
