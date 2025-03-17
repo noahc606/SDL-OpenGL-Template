@@ -22,6 +22,13 @@ GLuint glVAO, glVBO, glEBO;
 float x = 0;
 
 int main(int argc, char** argv) { Main m; return 0; }
+#if ( defined(_WIN32) || defined(WIN32) )
+int WinMain()
+{
+    char** x = new char*[1];
+    return main(0, x);
+}
+#endif
 Main::Main()
 {
     //Initialization
