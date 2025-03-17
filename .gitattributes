@@ -1,4 +1,4 @@
 # Auto detect text files and perform LF normalization
 * text=auto
-lib/** linguist-vendored
-build/** linguist-vendored
+include/stb/** linguist-vendored
+include/GLFW/** linguist-vendored
